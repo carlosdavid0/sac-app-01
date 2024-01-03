@@ -3,38 +3,36 @@ import React, { useState } from 'react'
 import { Video, ResizeMode } from 'expo-av'
 import { Dimensions, Image } from "react-native"
 import { StatusBar } from "expo-status-bar"
-export default function () {
+import { useNavigation } from "@react-navigation/native"
+export default function HomeAuth() {
 
-    // const handleVideoError = (error: string) => {
-    //     console.error("Erro na reprodução do vídeo:", error);
-    //     // setVideoError(true); // Sinaliza que ocorreu um erro na reprodução do vídeo
-    // };
 
-    const [videoLoaded,setVideoLoaded] = useState(false)
+
+    const [videoLoaded, setVideoLoaded] = useState(false)
+    const { navigate } = useNavigation()
 
 
     return (
         <VStack flex={1} bg="$purple800" px={10} py={'20%'} justifyContent="space-between">
-            <StatusBar style="light"/>
+            <StatusBar style="light" />
             <Video
                 source={{
                     //uri: '../../../assets/video-home-auth.mp4',
                     uri: 'https://res.cloudinary.com/dsolucoes/video/upload/v1702476808/pooc-sac/sac-01/video-home-auth_un1lc1.mp4',
                     overrideFileExtensionAndroid: 'video/avc',
-    
+
                 }}
-                style={{ flex: 1, position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, opacity: videoLoaded? 1:0 }}
+                style={{ flex: 1, position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, opacity: videoLoaded ? 1 : 0 }}
                 shouldPlay
-                
                 isLooping
                 resizeMode={ResizeMode.COVER}
-                onError={()=>{}}
-                onLoad={()=> setVideoLoaded(true)}
+                onError={() => { }}
+                onLoad={() => setVideoLoaded(true)}
 
             />
             <Image
                 source={require('../../../assets/video-home-auth.png')}
-                style={{ flex: 1, width: Dimensions.get(`screen`).width, height: Dimensions.get(`screen`).height, position: 'absolute', opacity:videoLoaded? 0:1  }}
+                style={{ flex: 1, width: Dimensions.get(`screen`).width, height: Dimensions.get(`screen`).height, position: 'absolute', opacity: videoLoaded ? 0 : 1 }}
                 resizeMode='cover'
             />
 
@@ -71,12 +69,12 @@ export default function () {
                 <VStack gap={10}>
                     <Button>
                         <Heading fontWeight="$semibold" color="$coolGray200">
-                            Acessar conta
+                            Seja nosso cliente
                         </Heading>
                     </Button>
-                    <Button variant="outline">
+                    <Button variant="outline" onPress={() => navigate('Login-documento')}>
                         <Heading fontWeight="$semibold" color="$coolGray200">
-                            Seja nosso cliente
+                            Acessar conta
                         </Heading>
                     </Button>
 

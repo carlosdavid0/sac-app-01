@@ -6,6 +6,7 @@
     "paths": {
       "@sac/*": ["./*"],
       "@components/*": ["src/components/*"],
+      "@routes/*": ["src/routes/*"],
       "@assets/*": ["src/assets/*"],
       "@screens/*": ["src/screens/*"],
       "@services/*": ["src/services/*"],
